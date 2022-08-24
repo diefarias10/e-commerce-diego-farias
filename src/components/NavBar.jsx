@@ -9,7 +9,7 @@ export default function NavBar () {
 
         <div className="header">
             <img src={logo} alt="" />
-            <ul>
+            <ul className="navBar">
                 <li><a href="#">Inicio</a></li>
                 <li><a href="#">Productos</a></li>
                 <li><a href="#">Nosotros</a></li>
