@@ -1,0 +1,19 @@
+.header{
+    background-color: #E9E5D6;
+    display: flex;
+    justify-content: space-around;
+}
+
+.header li {
+    list-style: none;
+}
+
+.header li a{
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+.header img {
+    width: 250px;
+}
+
