@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 
+* {
+    font-family: Roboto;
+}
+
 .header {
     background-color: #171717;
     padding: 5px;
@@ -20,8 +24,8 @@
 
 .navBar li a {
     display: inline-block;
-    font-family: Roboto;
     font-weight: bold;
+    font-size: 20px;
     text-decoration: none;
     text-transform: uppercase;
     letter-spacing: 1px;
@@ -41,4 +45,24 @@
 
 .header img {
     width: 250px;
+}
+
+.Cart {
+    display: flex;
+    align-items: center;
+    margin-right: 20px;
+}
+
+.Cart img {
+    width: 40px;
+}
+
+.Cart img:hover {
+    cursor: pointer;
+}
+
+.Cart p {
+    color: #DA0037;
+    font-weight: bold;
+    font-size: 20px;
 }
