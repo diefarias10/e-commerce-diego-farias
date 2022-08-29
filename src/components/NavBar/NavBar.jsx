@@ -4,7 +4,7 @@ import CartWidget from "./CartWidget";
 import './NavBar.css';
 
 
-export default function NavBar () {
+export default function NavBar() {
 
     return (
 
@@ -15,7 +15,7 @@ export default function NavBar () {
                 <li><a href="#">Productos</a></li>
                 <li><a href="#">Nosotros</a></li>
             </ul>
-            <CartWidget/>
+            <CartWidget />
         </div>
 
     );
