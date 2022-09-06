@@ -15,13 +15,12 @@
 
 .itemCard h1 {
     color: #EDEDED;
-    background-color: #171717;
+    background-color: #DA0037;
     margin: 10px 0;
     font-size: 18px;
     font-weight: normal;
     padding-top: 5px;
     padding-bottom: 5px;
-    border-bottom: 1px solid #444444;
     width: 100%;
 }
 
@@ -33,7 +32,7 @@
     background-color: white;
     color: #DA0037;
     font-size: 16px;
-    padding: 4px 0;
+    padding: 5px 0;
     border: 1px solid #DA0037;
     border-radius: 3px;
     width: 80%;
@@ -49,7 +48,8 @@
 
 .itemStock{
     width: 100%;
-    background-color: #DA0037;
+    background-color: #171717;
+    color:#EDEDED;
     margin-bottom: 10px;
 }
 

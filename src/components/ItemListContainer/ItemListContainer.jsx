@@ -10,7 +10,7 @@ export default function ItemListContainer({ greeting }) {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        console.log('Golaaaaa')
+        
         let productsPromise = new Promise((resolve, reject) => {
 
             setTimeout(() => {
