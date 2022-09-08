@@ -1,5 +1,5 @@
 import React from "react";
-import CartIcon from '../../img/cart.png';
+import CartIcon from '../img/cart.png'
 
 
 export default function CartWidget() {
