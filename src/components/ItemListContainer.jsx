@@ -73,7 +73,6 @@ export default function ItemListContainer({ greeting }) {
     return (
 
         <div>
-            <ItemCount initial={1} stock={10} onAdd={addItemCart} />
             <ItemList items={products} />
         </div>
 

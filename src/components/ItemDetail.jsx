@@ -1,5 +1,6 @@
 import React from "react";
 import './ItemDetail.css';
+import ItemCount from "./ItemCount";
 
 export default function ItemDetail({ item }) {
     return (
@@ -12,9 +13,7 @@ export default function ItemDetail({ item }) {
                 <h1>{item.title}</h1>
                 <p>{item.description}</p>
                 <h2>$ {item.price}</h2>
-                <div>
-                    <button>Agregar al carrito +</button>
-                </div>
+               <ItemCount initial={1} stock={10} onAdd={null} />
             </div>
         </div>
     );

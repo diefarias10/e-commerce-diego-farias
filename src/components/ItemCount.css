@@ -1,24 +1,19 @@
-*{
+* {
     font-family: Roboto;
 }
 
 .counter {
-    background-color: #444444;
+
     width: 300px;
     border-radius: 20px;
     padding: 10px 20px 20px 20px;
 }
 
-.itemTitle{
-    color: #EDEDED;
-    text-align: left;
-    font-size: 20px;
-    margin: 0;
-}
-
-.buttons p {
-    color: #EDEDED;
-    font-size: 25px;
+.counter .quantity {
+    color: #171717;
+    text-align: center;
+    font-weight: bold;
+    font-size: 16px;
 }
 
 .buttons {
@@ -27,30 +22,39 @@
     align-items: center;
 }
 
-.buttons button {
-    background-color: #EDEDED;
-    color: #DA0037;
-    width: 50px;
-    height: 50px;
-    text-align: center;
-    font-size: 25px;
+.buttons .counter-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #444444;
+    color: #EDEDED;
+    width: 30px;
+    height: 30px;
+    font-size: 16px;
     font-weight: bold;
     border: none;
-    border-radius: 5px;
+    border-radius: 3px;
 }
 
-.counter button:hover {
+.counter-button:hover {
     background-color: #DA0037;
     color: #EDEDED;
     cursor: pointer;
 }
 
-.btnAdd{
-    color:#DA0037;
+.counter .btnAdd {
+    color: #EDEDED;
     width: 100%;
     margin-top: 10px;
     font-size: 20px;
     border-radius: 5px;
     padding: 5px;
     border: 1px solid #DA0037;
+    transition: background-color 0.15s border-color 0.15s;
+}
+
+.counter .btnAdd:hover {
+    background-color: #b4002d;
+    border-color: #b4002d;
+    cursor: pointer;
 }
