@@ -20,7 +20,7 @@ export default function ItemDetail({ item }) {
         <div className="itemDetail">
             <div className="picture">
                 <img src={item.pictureUrl} alt="Foto producto" />
-                <p className="stock">Stock disponible!</p>
+                <p className="stock">Stock disponible: {item.stock}</p>
             </div>
             <div className="details">
                 <h1>{item.title}</h1>

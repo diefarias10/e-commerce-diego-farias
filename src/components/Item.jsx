@@ -17,7 +17,7 @@ export default function Item({ item }) {
             <Link to={'/item/' + item.id} className='itemBtn'> <button> Ver detalle</button></Link>
 
             <div className="itemStock">
-                <p>Stock disponible: </p>
+                <p>Stock disponible: {item.stock}</p>
             </div>
         </div>
 

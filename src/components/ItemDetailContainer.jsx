@@ -55,7 +55,7 @@ export default function ItemDetailContainer() {
      }*/
 
     return (
-        <div>
+        <div style={{height: '100vh'}}>
             <ItemDetail item={product} />
         </div>
     );

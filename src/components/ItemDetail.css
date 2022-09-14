@@ -1,10 +1,17 @@
 .itemDetail {
     display: flex;
+    justify-content: center;
     background-color: #EDEDED;
     border: none;
-    border-radius: 10px;
-    width: 500px;
     padding: 20px 20px 20px 0;
+}
+
+.itemDetail .picture{
+    padding-right: 20px;
+}
+
+.itemDetail .picture img{
+    width: 320px;
 }
 
 .details{
@@ -13,6 +20,7 @@
     justify-content: space-between;
     border-left: 1px solid #444444;
     padding-left: 15px;
+    width: 30%;
 }
 
 .stock{
@@ -27,7 +35,6 @@
 
 .details p{
     text-align: left;
-    width: 30%;
 }
 
 .details h1{
@@ -38,6 +45,7 @@
 .details h2{
     text-align: left;
     font-weight: normal;
+    font-size: 35px;
 }
 
 .details button{

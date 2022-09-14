@@ -1,18 +1,17 @@
 import React, { useState, useEffect } from "react";
-import ItemCount from "./ItemCount";
 import ItemList from "./ItemList";
 import { useParams } from "react-router-dom";
 
 const productsMock = [
-    { id: '1', title: 'Catan', description: 'Descripcion del producto', price: 2500, category: 'Familiares', pictureUrl: 'https://i.ibb.co/jk1ZV7b/catan.png' },
-    { id: '2', title: 'Bang!', description: 'Descripcion del producto', price: 2500, category: 'Adultos', pictureUrl: 'https://i.ibb.co/3z40Rp7/Bang.png' },
-    { id: '3', title: 'Codigo Secreto', description: 'Descripcion del producto', price: 2500, category: 'Familiares', pictureUrl: 'https://i.ibb.co/929Kjdv/Codigo-Secreto.png' },
-    { id: '4', title: 'Exploding Kittens', description: 'Descripcion del producto', price: 2500, category: 'Adultos', pictureUrl: 'https://i.ibb.co/r7YcDF1/Exploding.png' },
-    { id: '5', title: 'King of Tokyo', description: 'Descripcion del producto', price: 2500, category: 'Niños', pictureUrl: 'https://i.ibb.co/R3yH0GC/King-Of-Tokyo.png' },
-    { id: '6', title: 'Monopoly', description: 'Descripcion del producto', price: 2500, categroy: 'Familiares', pictureUrl: 'https://i.ibb.co/M6PqHYW/Monopoly.png' },
-    { id: '7', title: 'Uno!', description: 'Descripcion del producto', price: 2500, category: 'Familiares', pictureUrl: 'https://i.ibb.co/sWxwH6f/Uno.png' },
-    { id: '8', title: 'Situacion Limite', description: 'Descripcion del producto', price: 2500, category: 'Adultos', pictureUrl: 'https://i.ibb.co/Mcd3ryN/situacion-limite.png' },
-    { id: '9', title: 'Virus!', description: 'Descripcion del producto', price: 2500, category: 'Niños', pictureUrl: 'https://i.ibb.co/9HkC19W/virus.png' }
+    { id: '1', title: 'Catan', description: 'Descripcion del producto', price: 2500, category: 'Familiares', pictureUrl: 'https://i.ibb.co/jk1ZV7b/catan.png', stock: 10 },
+    { id: '2', title: 'Bang!', description: 'Descripcion del producto', price: 2500, category: 'Adultos', pictureUrl: 'https://i.ibb.co/3z40Rp7/Bang.png', stock: 10 },
+    { id: '3', title: 'Codigo Secreto', description: 'Descripcion del producto', price: 2500, category: 'Familiares', pictureUrl: 'https://i.ibb.co/929Kjdv/Codigo-Secreto.png', stock: 10 },
+    { id: '4', title: 'Exploding Kittens', description: 'Descripcion del producto', price: 2500, category: 'Adultos', pictureUrl: 'https://i.ibb.co/r7YcDF1/Exploding.png', stock: 10 },
+    { id: '5', title: 'King of Tokyo', description: 'Descripcion del producto', price: 2500, category: 'Niños', pictureUrl: 'https://i.ibb.co/R3yH0GC/King-Of-Tokyo.png', stock: 10 },
+    { id: '6', title: 'Monopoly', description: 'Descripcion del producto', price: 2500, categroy: 'Familiares', pictureUrl: 'https://i.ibb.co/M6PqHYW/Monopoly.png', stock: 10 },
+    { id: '7', title: 'Uno!', description: 'Descripcion del producto', price: 2500, category: 'Familiares', pictureUrl: 'https://i.ibb.co/sWxwH6f/Uno.png', stock: 10 },
+    { id: '8', title: 'Situacion Limite', description: 'Descripcion del producto', price: 2500, category: 'Adultos', pictureUrl: 'https://i.ibb.co/Mcd3ryN/situacion-limite.png', stock: 10 },
+    { id: '9', title: 'Virus!', description: 'Descripcion del producto', price: 2500, category: 'Niños', pictureUrl: 'https://i.ibb.co/9HkC19W/virus.png', stock: 10 }
 ]
 
 export default function ItemListContainer({ greeting }) {
@@ -72,7 +71,7 @@ export default function ItemListContainer({ greeting }) {
 
     return (
 
-        <div>
+        <div >
             <ItemList items={products} />
         </div>
 
