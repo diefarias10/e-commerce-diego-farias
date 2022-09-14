@@ -11,7 +11,7 @@ export default function ItemCount({ initial, stock, onAdd }) {
         if (count <= available) {
             let rest = available - count;
             setAvailable(rest)
-            onAdd()
+            onAdd(count)
             console.log("Quedan " + rest + " items en stock")
         }
     }

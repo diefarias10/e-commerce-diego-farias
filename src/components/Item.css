@@ -28,6 +28,10 @@
     width: 160px;
 }
 
+.itemCard .itemBtn{
+    width: 80%;
+}
+
 .itemCard button {
     background-color: white;
     color: #DA0037;
@@ -35,9 +39,9 @@
     padding: 5px 0;
     border: 1px solid #DA0037;
     border-radius: 3px;
-    width: 80%;
     transition: background-color 0.15s;
     margin: 10px 0;
+    width: 100%;
 }
 
 .itemCard button:hover {
