@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import ItemList from "./ItemList";
 import { useParams } from "react-router-dom";
+import ClimbingBoxLoader from "react-spinners/ClimbingBoxLoader";
+import './ItemListContainer.css';
 
 const productsMock = [
     { id: '1', title: 'Catan', description: 'Descripcion del producto', price: 2500, category: 'Familiares', pictureUrl: 'https://i.ibb.co/jk1ZV7b/catan.png', stock: 10 },
@@ -17,49 +19,31 @@ const productsMock = [
 export default function ItemListContainer({ greeting }) {
     const [products, setProducts] = useState([]);
     const [error, setError] = useState('');
-    const [loading, setLoading] = useState(true);
+    const [loading, setLoading] = useState(false);
     const { idCategory } = useParams();
 
     useEffect(() => {
+        setLoading(true)
+        setProducts([])
+        let productsPromise = new Promise((resolve, reject) => {
 
-        /* let productsPromise = new Promise((resolve, reject) => {
- 
-              setTimeout(() => {
-             resolve(
-                 [
-                     { id: '1', title: 'Catan', description: 'Descripcion del producto', price: 2500, category: 'Familiares', pictureUrl: 'https://i.ibb.co/jk1ZV7b/catan.png' },
-                     { id: '2', title: 'Bang!', description: 'Descripcion del producto', price: 2500, category: 'Adultos', pictureUrl: 'https://i.ibb.co/3z40Rp7/Bang.png' },
-                     { id: '3', title: 'Codigo Secreto', description: 'Descripcion del producto', price: 2500, category: 'Familiar', pictureUrl: 'https://i.ibb.co/929Kjdv/Codigo-Secreto.png' },
-                     { id: '4', title: 'Exploding Kittens', description: 'Descripcion del producto', price: 2500, category: 'Adultos', pictureUrl: 'https://i.ibb.co/r7YcDF1/Exploding.png' },
-                     { id: '5', title: 'King of Tokyo', description: 'Descripcion del producto', price: 2500, category: 'Niños', pictureUrl: 'https://i.ibb.co/R3yH0GC/King-Of-Tokyo.png' },
-                     { id: '6', title: 'Monopoly', description: 'Descripcion del producto', price: 2500, categroy: 'Familiares', pictureUrl: 'https://i.ibb.co/M6PqHYW/Monopoly.png' },
-                     { id: '7', title: 'Uno!', description: 'Descripcion del producto', price: 2500, category: 'Familiares', pictureUrl: 'https://i.ibb.co/sWxwH6f/Uno.png' },
-                     { id: '8', title: 'Situacion Limite', description: 'Descripcion del producto', price: 2500, category: 'Adultos', pictureUrl: 'https://i.ibb.co/Mcd3ryN/situacion-limite.png' },
-                     { id: '9', title: 'Virus!', description: 'Descripcion del producto', price: 2500, category: 'Niños', pictureUrl: 'https://i.ibb.co/9HkC19W/virus.png' }
-                 ]
-             )
-             }, 2000);
-         });
- 
-         productsPromise.then((resolve) => {
- 
-             setProducts(resolve);
- 
-         })
-             .catch((err) => {
-                 setError(err)
-             })
-             .finally(() => {
-                 setLoading(false)
-             })*/
+            setTimeout(() => {
+                setLoading(false)
+                resolve(
+                    productsMock
+                )
+            }, 2000);
+        });
 
-
-        if (!idCategory) {
-            setProducts(productsMock)
-        } else {
-            setProducts(productsMock.filter(element => element.category == idCategory));
-        }
-
+        productsPromise.then((resolve) => {
+            !idCategory ? setProducts(resolve) : setProducts(resolve.filter(element => element.category == idCategory));
+        })
+            .catch((err) => {
+                setError(err)
+            })
+            .finally(() => {
+                setLoading(false)
+            })
 
     }, [idCategory]);
 
@@ -71,8 +55,12 @@ export default function ItemListContainer({ greeting }) {
 
     return (
 
-        <div >
-            <ItemList items={products} />
+        <div style={{ height: '100vh' }}>
+            {loading ?
+                <div className="spinner">
+                    <ClimbingBoxLoader color={'#DA0037'} loading={loading} cssOverride={''} size={15} />
+                </div>
+                : <ItemList items={products} />}
         </div>
 
     );

@@ -1,19 +1,27 @@
 import React, { useState } from "react";
 import './ItemDetail.css';
 import ItemCount from "./ItemCount";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { CartContext } from "../context/CartContext";
 
 export default function ItemDetail({ item }) {
-
+    const goTo = useNavigate()
     const [itemsAdded, setItemsAdded] = useState(0)
+    const { addItem } = useContext(CartContext)
 
     function addToCart(number) {
-        console.log('Se agregaron ' + number + ' items al carrito')
+        
+        let purchase = {
+            id: item.id,
+            name: item.title,
+            price: item.price,
+            stock: item.stock,
+            picture: item.pictureUrl,
+            quantity: number
+        }
         setItemsAdded(number)
-    }
-
-    function gotoCart(){
-
+        addItem(purchase)
     }
 
     return (
@@ -27,7 +35,7 @@ export default function ItemDetail({ item }) {
                 <p>{item.description}</p>
                 <h2>$ {item.price}</h2>
                 {
-                    itemsAdded > 0 ? <Link to='/cart'><button className="btnCart">Terminar mi compra</button></Link> : <ItemCount initial={1} stock={10} onAdd={addToCart} />
+                    itemsAdded > 0 ? <button className="btnCart" onClick={() => goTo('/cart')}>Terminar mi compra</button> : <ItemCount initial={1} stock={10} onAdd={addToCart} />
                 }
 
             </div>
