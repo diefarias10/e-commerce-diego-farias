@@ -5,10 +5,8 @@ import { CartContext } from "../context/CartContext";
 export default function Cart() {
     const { cart } = useContext(CartContext)
 
-    console.log('MI CARRITO ' + cart)
-
     return (
-        <div>
+        <div style={{height: '100vh'}}>
             <p>Cart</p>
         </div>
     );

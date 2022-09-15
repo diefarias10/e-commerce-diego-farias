@@ -9,19 +9,22 @@ export default function ItemDetail({ item }) {
     const goTo = useNavigate()
     const [itemsAdded, setItemsAdded] = useState(0)
     const { addItem } = useContext(CartContext)
+    const {id, title, price, stock, pictureUrl} = item
 
     function addToCart(number) {
         
         let purchase = {
-            id: item.id,
-            name: item.title,
-            price: item.price,
-            stock: item.stock,
-            picture: item.pictureUrl,
+            id,
+            title,
+            price,
+            stock,
+            pictureUrl,
             quantity: number
         }
         setItemsAdded(number)
         addItem(purchase)
+
+        console.log('Mando al carro esto: ' + purchase.title)
     }
 
     return (
