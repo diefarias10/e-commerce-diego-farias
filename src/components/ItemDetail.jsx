@@ -23,8 +23,6 @@ export default function ItemDetail({ item }) {
         }
         setItemsAdded(number)
         addItem(purchase)
-
-        console.log('Mando al carro esto: ' + purchase.title)
     }
 
     return (

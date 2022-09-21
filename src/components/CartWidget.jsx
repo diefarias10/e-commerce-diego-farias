@@ -1,9 +1,12 @@
 import React from "react";
 import CartIcon from '../img/cart.png';
 import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { CartContext } from "../context/CartContext";
 
 
 export default function CartWidget() {
+    const {howMany} = useContext(CartContext);
 
     return (
 
@@ -11,7 +14,7 @@ export default function CartWidget() {
             <Link to='/cart'>
                 <img src={CartIcon} alt="" />
             </Link>
-            <p>0</p>
+            <p>{howMany()}</p>
         </div >
 
 

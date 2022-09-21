@@ -13,7 +13,7 @@ export const CartProvider = ({ children }) => {
             const updatedCart = cart.map((product) => {
                 if (product.id === item.id) {
                     return { ...product, quantity: product.quantity + item.quantity }
-                }else{
+                } else {
                     return product
                 }
             })
@@ -35,8 +35,12 @@ export const CartProvider = ({ children }) => {
         return cart.some((product) => product.id === id)
     }
 
+    const howMany = () => {
+        return cart.length;
+    }
+
     return (
-        <CartContext.Provider value={{ cart, addItem, clear, removeItem }}>
+        <CartContext.Provider value={{ cart, addItem, clear, removeItem , howMany}}>
             {children}
         </CartContext.Provider>
     )
