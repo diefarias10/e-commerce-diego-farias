@@ -3,20 +3,10 @@ import ItemList from "./ItemList";
 import { useParams } from "react-router-dom";
 import ClimbingBoxLoader from "react-spinners/ClimbingBoxLoader";
 import './ItemListContainer.css';
+import { getFirestore, collection, getDocs } from 'firebase/firestore';
 
-const productsMock = [
-    { id: '1', title: 'Catan', description: 'Descripcion del producto', price: 2500, category: 'Familiares', pictureUrl: 'https://i.ibb.co/jk1ZV7b/catan.png', stock: 10 },
-    { id: '2', title: 'Bang!', description: 'Descripcion del producto', price: 2500, category: 'Adultos', pictureUrl: 'https://i.ibb.co/3z40Rp7/Bang.png', stock: 10 },
-    { id: '3', title: 'Codigo Secreto', description: 'Descripcion del producto', price: 2500, category: 'Familiares', pictureUrl: 'https://i.ibb.co/929Kjdv/Codigo-Secreto.png', stock: 10 },
-    { id: '4', title: 'Exploding Kittens', description: 'Descripcion del producto', price: 2500, category: 'Adultos', pictureUrl: 'https://i.ibb.co/r7YcDF1/Exploding.png', stock: 10 },
-    { id: '5', title: 'King of Tokyo', description: 'Descripcion del producto', price: 2500, category: 'Niños', pictureUrl: 'https://i.ibb.co/R3yH0GC/King-Of-Tokyo.png', stock: 10 },
-    { id: '6', title: 'Monopoly', description: 'Descripcion del producto', price: 2500, categroy: 'Familiares', pictureUrl: 'https://i.ibb.co/M6PqHYW/Monopoly.png', stock: 10 },
-    { id: '7', title: 'Uno!', description: 'Descripcion del producto', price: 2500, category: 'Familiares', pictureUrl: 'https://i.ibb.co/sWxwH6f/Uno.png', stock: 10 },
-    { id: '8', title: 'Situacion Limite', description: 'Descripcion del producto', price: 2500, category: 'Adultos', pictureUrl: 'https://i.ibb.co/Mcd3ryN/situacion-limite.png', stock: 10 },
-    { id: '9', title: 'Virus!', description: 'Descripcion del producto', price: 2500, category: 'Niños', pictureUrl: 'https://i.ibb.co/9HkC19W/virus.png', stock: 10 }
-]
 
-export default function ItemListContainer({ greeting }) {
+export default function ItemListContainer() {
     const [products, setProducts] = useState([]);
     const [error, setError] = useState('');
     const [loading, setLoading] = useState(false);
@@ -25,18 +15,21 @@ export default function ItemListContainer({ greeting }) {
     useEffect(() => {
         setLoading(true)
         setProducts([])
-        let productsPromise = new Promise((resolve, reject) => {
+        const db = getFirestore()
 
-            setTimeout(() => {
-                setLoading(false)
-                resolve(
-                    productsMock
-                )
-            }, 2000);
-        });
+        const collectionRef = collection(db, 'products');
 
-        productsPromise.then((resolve) => {
-            !idCategory ? setProducts(resolve) : setProducts(resolve.filter(element => element.category == idCategory));
+        getDocs(collectionRef).then((res) => {
+            setLoading(false)
+            const tidyProds = []
+
+            res.docs.map((item) => {
+                const tidyItem = { ...item.data(), id: item.id }
+                tidyProds.push(tidyItem)
+            })
+
+            !idCategory ?
+                setProducts(tidyProds) : setProducts(tidyProds.filter(element => element.category == idCategory))
         })
             .catch((err) => {
                 setError(err)
@@ -44,14 +37,7 @@ export default function ItemListContainer({ greeting }) {
             .finally(() => {
                 setLoading(false)
             })
-
     }, [idCategory]);
-
-
-    const addItemCart = () => {
-        //Logica de funcion para agregar item al carrito
-        console.log("Item/s agregado/s correctamente!")
-    }
 
     return (
 

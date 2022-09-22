@@ -1,39 +1,28 @@
 import React, { useEffect, useState } from "react";
 import ItemDetail from "./ItemDetail";
 import { useParams } from "react-router-dom";
+import ClimbingBoxLoader from "react-spinners/ClimbingBoxLoader";
+import { getFirestore, collection, doc, getDoc } from 'firebase/firestore';
 
 
 export default function ItemDetailContainer() {
     const [error, setError] = useState('');
-    const [loading, setLoading] = useState(true);
+    const [loading, setLoading] = useState(false);
     const { idProduct } = useParams();
     const [product, setProduct] = useState({});
 
     useEffect(() => {
 
-        let productPromise = new Promise((resolve, reject) => {
+        setLoading(true)
+        const db = getFirestore()
 
-            resolve(
+        const productRef = doc(db, 'products', idProduct);
 
-                [
-                    { id: '1', title: 'Catan', description: 'Descripcion del producto', price: 2500, category: 'Familiar', pictureUrl: 'https://i.ibb.co/jk1ZV7b/catan.png' },
-                    { id: '2', title: 'Bang!', description: 'Descripcion del producto', price: 2500, category: 'Adultos', pictureUrl: 'https://i.ibb.co/3z40Rp7/Bang.png' },
-                    { id: '3', title: 'Codigo Secreto', description: 'Descripcion del producto', price: 2500, category: 'Familiar', pictureUrl: 'https://i.ibb.co/929Kjdv/Codigo-Secreto.png' },
-                    { id: '4', title: 'Exploding Kittens', description: 'Descripcion del producto', price: 2500, category: 'Adultos', pictureUrl: 'https://i.ibb.co/r7YcDF1/Exploding.png' },
-                    { id: '5', title: 'King of Tokyo', description: 'Descripcion del producto', price: 2500, category: 'Niños', pictureUrl: 'https://i.ibb.co/R3yH0GC/King-Of-Tokyo.png' },
-                    { id: '6', title: 'Monopoly', description: 'Descripcion del producto', price: 2500, categroy: 'Familiar', pictureUrl: 'https://i.ibb.co/M6PqHYW/Monopoly.png' },
-                    { id: '7', title: 'Uno!', description: 'Descripcion del producto', price: 2500, category: 'Familiar', pictureUrl: 'https://i.ibb.co/sWxwH6f/Uno.png' },
-                    { id: '8', title: 'Situacion Limite', description: 'Descripcion del producto', price: 2500, category: 'Adultos', pictureUrl: 'https://i.ibb.co/Mcd3ryN/situacion-limite.png' },
-                    { id: '9', title: 'Virus!', description: 'Descripcion del producto', price: 2500, category: 'Niños', pictureUrl: 'https://i.ibb.co/9HkC19W/virus.png' }
-                ]
+        getDoc(productRef).then((res) => {
+            setLoading(false)
+            const tidyProd = { ...res.data(), id: res.id }
 
-            )
-        });
-
-        productPromise.then((resolve) => {
-
-            let prod = resolve.find(element => element.id == idProduct)
-            setProduct(prod)
+            setProduct(tidyProd)
 
         })
             .catch((err) => {
@@ -42,21 +31,16 @@ export default function ItemDetailContainer() {
             .finally(() => {
                 setLoading(false)
             })
-
     }, [idProduct]);
 
-    /* const getItem = (prodid) => {
- 
-         
-         let prod = products.find(p => p.id === prodid)
-         console.log(prod)
-         setProduct(prod);
- 
-     }*/
 
     return (
-        <div style={{height: '100vh'}}>
-            <ItemDetail item={product} />
+        <div style={{ height: '100vh' }}>
+            {loading ?
+                <div className="spinner">
+                    <ClimbingBoxLoader color={'#DA0037'} loading={loading} cssOverride={''} size={15} />
+                </div>
+                : <ItemDetail item={product} />}
         </div>
     );
 }

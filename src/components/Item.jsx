@@ -11,9 +11,6 @@ export default function Item({ item }) {
             <div>
                 <img src={item.pictureUrl} alt="Foto juego" />
             </div>
-            <div>
-                <p>{item.description}</p>
-            </div>
             <Link to={'/item/' + item.id} className='itemBtn'> <button> Ver detalle</button></Link>
 
             <div className="itemStock">

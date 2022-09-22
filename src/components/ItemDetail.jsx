@@ -33,8 +33,8 @@ export default function ItemDetail({ item }) {
             </div>
             <div className="details">
                 <h1>{item.title}</h1>
-                <p>{item.description}</p>
-                <h2>$ {item.price}</h2>
+                <p className="details-description">{item.description}</p>
+                <h2 className="details-price">$ {item.price}</h2>
                 {
                     itemsAdded > 0 ? <button className="btnCart" onClick={() => goTo('/cart')}>Terminar mi compra</button> : <ItemCount initial={1} stock={10} onAdd={addToCart} />
                 }
