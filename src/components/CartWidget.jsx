@@ -6,7 +6,7 @@ import { CartContext } from "../context/CartContext";
 
 
 export default function CartWidget() {
-    const {howMany} = useContext(CartContext);
+    const { howMany } = useContext(CartContext);
 
     return (
 

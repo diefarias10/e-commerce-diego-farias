@@ -36,11 +36,16 @@ export const CartProvider = ({ children }) => {
     }
 
     const howMany = () => {
-        return cart.length;
+        let number = 0
+
+        cart.map((item) => {
+            number += item.quantity;
+        })
+        return number;
     }
 
     return (
-        <CartContext.Provider value={{ cart, addItem, clear, removeItem , howMany}}>
+        <CartContext.Provider value={{ cart, addItem, clear, removeItem, howMany }}>
             {children}
         </CartContext.Provider>
     )
