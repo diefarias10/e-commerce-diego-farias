@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import { useContext } from "react";
+import './Checkout.css';
 import { CartContext } from "../context/CartContext";
 import { getFirestore, collection, addDoc } from 'firebase/firestore';
+import ClimbingBoxLoader from "react-spinners/ClimbingBoxLoader";
 
 
 export default function Checkout() {
@@ -28,24 +30,30 @@ export default function Checkout() {
         addDoc(myCollection, order).then(({ id }) => {
             setLoading(false)
             setOrderId(id)
-            console.log(orderId)
+            alert('Su orden ha sido enviada correctamente!')
         })
 
     }
 
     return (
-        <div>
-            <div className="checkoutForm">
-                <input value={name} type="text" placeholder="Nombre" onChange={(e) => setName(e.target.value)} />
-                <input value={phone} type="text" placeholder="Telefono" onChange={(e) => setPhone(e.target.value)} />
-                <input value={email} type="text" placeholder="Email" onChange={(e) => setEmail(e.target.value)} />
+        <div style={{ height: '100vh', textAlign: 'center' }}>
+            {!loading ?
+                <div className="checkoutForm">
+                    <h1>Completa tu orden...</h1>
+                    <input value={name} type="text" placeholder="Nombre" onChange={(e) => setName(e.target.value)} />
+                    <input value={phone} type="text" placeholder="Telefono" onChange={(e) => setPhone(e.target.value)} />
+                    <input value={email} type="text" placeholder="Email" onChange={(e) => setEmail(e.target.value)} />
 
-                <div className="checkoutForm-actions">
-                    <button onClick={submitOrder}>Finalizar compra!</button>
-                    <button>Cancelar</button>
+                    <div className="checkoutForm-actions">
+                        <button onClick={submitOrder}>Finalizar compra!</button>
+                        <button>Cancelar</button>
+                    </div>
                 </div>
-
-            </div>
+                :
+                <div className="spinner">
+                    <ClimbingBoxLoader color={'#DA0037'} loading={loading} cssOverride={''} size={15} />
+                </div>
+            }
         </div>
     )
 }

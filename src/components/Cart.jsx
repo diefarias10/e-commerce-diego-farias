@@ -44,11 +44,6 @@ export default function Cart() {
                     <button onClick={() => goTo('/checkout')}>Checkout</button>
                 </div>
             </div>
-
-
-
-
         </div>
     );
-
 }
