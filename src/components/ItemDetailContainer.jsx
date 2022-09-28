@@ -35,7 +35,7 @@ export default function ItemDetailContainer() {
 
 
     return (
-        <div style={{ height: '100vh' }}>
+        <div style={{ height: '100vh', display:'flex', flexDirection: 'column', justifyContent: 'center' }}>
             {loading ?
                 <div className="spinner">
                     <ClimbingBoxLoader color={'#DA0037'} loading={loading} cssOverride={''} size={15} />

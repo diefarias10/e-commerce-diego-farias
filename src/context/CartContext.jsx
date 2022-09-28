@@ -35,6 +35,16 @@ export const CartProvider = ({ children }) => {
         return cart.some((product) => product.id === id)
     }
 
+    const getTotalPrice = () => {
+        let total = 0
+
+        cart.map((product) => {
+            total += product.price * product.quantity
+        })
+
+        return total
+    }
+
     const howMany = () => {
         let number = 0
 
@@ -45,7 +55,7 @@ export const CartProvider = ({ children }) => {
     }
 
     return (
-        <CartContext.Provider value={{ cart, addItem, clear, removeItem, howMany }}>
+        <CartContext.Provider value={{ cart, addItem, clear, removeItem, howMany, getTotalPrice }}>
             {children}
         </CartContext.Provider>
     )

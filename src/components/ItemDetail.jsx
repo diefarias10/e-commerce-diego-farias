@@ -9,10 +9,10 @@ export default function ItemDetail({ item }) {
     const goTo = useNavigate()
     const [itemsAdded, setItemsAdded] = useState(0)
     const { addItem } = useContext(CartContext)
-    const {id, title, price, stock, pictureUrl} = item
+    const { id, title, price, stock, pictureUrl } = item
 
     function addToCart(number) {
-        
+
         let purchase = {
             id,
             title,
@@ -35,9 +35,10 @@ export default function ItemDetail({ item }) {
                 <h1>{item.title}</h1>
                 <p className="details-description">{item.description}</p>
                 <h2 className="details-price">$ {item.price}</h2>
-                {
-                    itemsAdded > 0 ? <button className="btnCart" onClick={() => goTo('/cart')}>Terminar mi compra</button> : <ItemCount initial={1} stock={10} onAdd={addToCart} />
-                }
+                <div className="details-actions">
+                    {itemsAdded > 0 ? <button className="btnCart" onClick={() => goTo('/cart')}>Terminar mi compra</button> : <ItemCount initial={1} stock={10} onAdd={addToCart} />}
+                </div>
+
 
             </div>
         </div>
