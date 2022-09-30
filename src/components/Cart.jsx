@@ -1,19 +1,26 @@
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { CartContext } from "../context/CartContext";
 import { Link } from "react-router-dom";
 import './Cart.css';
 import CartItem from "./CartItem";
+import Popup from "./Popup";
+import Checkout from "./Checkout";
+
 
 export default function Cart() {
     const goTo = useNavigate()
     const { cart, howMany, removeItem, getTotalPrice } = useContext(CartContext)
+    const [showCheckout, setShowCheckout] = useState(false)
+
+
+    const checkoutSwitch = () => {
+        setShowCheckout(!showCheckout)
+    }
 
     return (
         <div style={{ height: '100vh', display: 'flex' }}>
-
-
             <div className="cart">
                 <div className="cart-title">
                     <h1>Carrito de compras</h1>
@@ -41,9 +48,12 @@ export default function Cart() {
                     <button>Aplicar</button>
                 </div>
                 <div className="cart-summary-footer">
-                    <button onClick={() => goTo('/checkout')}>Checkout</button>
+                    <button onClick={checkoutSwitch}>Checkout</button>
                 </div>
             </div>
+            <Popup show={showCheckout}>
+                <Checkout close={checkoutSwitch} />
+            </Popup>
         </div>
     );
 }

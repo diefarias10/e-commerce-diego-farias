@@ -20,7 +20,7 @@ export default function ItemCount({ initial, stock, onAdd }) {
         <div className="counter">
             <div className="buttons">
                 
-                    <button className="counter-button" onClick={() => { count > 0 ? setCount(count - 1) : setCount(count) }}>-</button>
+                    <button className="counter-button" onClick={() => { count > 1 ? setCount(count - 1) : setCount(count) }}>-</button>
                     <p className="quantity">{count}</p>
                     <button className="counter-button" onClick={() => { count < stock ? setCount(count + 1) : setCount(count) }}>+</button>
             </div>

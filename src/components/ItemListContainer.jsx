@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import ItemList from "./ItemList";
 import { useParams } from "react-router-dom";
-import ClimbingBoxLoader from "react-spinners/ClimbingBoxLoader";
 import './ItemListContainer.css';
 import { getFirestore, collection, getDocs } from 'firebase/firestore';
+import LoadScreen from "./LoadScreen";
 
 
 export default function ItemListContainer() {
@@ -43,9 +43,7 @@ export default function ItemListContainer() {
 
         <div style={{ height: '100vh' }}>
             {loading ?
-                <div className="spinner">
-                    <ClimbingBoxLoader color={'#DA0037'} loading={loading} cssOverride={''} size={15} />
-                </div>
+                <LoadScreen show={loading} />
                 : <ItemList items={products} />}
         </div>
 

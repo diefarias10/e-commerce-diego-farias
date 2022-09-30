@@ -236,5 +236,7 @@
     transition: background-color 0.15s, border 0.15s;
 }
 
-
-.cart-empty {}
+.cart-summary-footer button:hover{
+    background-color: #b4002d;
+    cursor: pointer;
+}
