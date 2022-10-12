@@ -14,10 +14,53 @@
     font-size: 17px;
     margin: 5px 0;
     border: 1px solid transparent;
+    border-radius: 3px;
     padding: 5px;
     width: 50%;
+    transition: border 0.5s;
 }
 
-.checkoutForm:focus {
+.checkoutForm input:focus {
     outline: none;
+    border: 1px solid #DA0037;
+}
+
+.checkoutForm-actions {
+    display: flex;
+    justify-content: space-evenly;
+    padding: 10px;
+}
+
+.checkoutForm-PrimaryBtn {
+    color: #EDEDED;
+    background-color: #DA0037;
+    border: 1px solid #DA0037;
+    border-radius: 3px;
+    font-size: 16px;
+    padding: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: background-color 0.15s, border 0.15s;
+}
+
+.checkoutForm-PrimaryBtn:hover{
+    background-color: #b4002d;
+    cursor: pointer;
+}
+
+.checkoutForm-SecondaryBtn{
+    color: #444444;
+    border: 1px solid #444444;
+    border-radius: 3px;
+    font-size: 16px;
+    padding: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: background-color 0.15s, border 0.15s;
+}
+
+.checkoutForm-SecondaryBtn:hover{
+    background-color: #444444;
+    color: #EDEDED;
+    cursor: pointer;
 }

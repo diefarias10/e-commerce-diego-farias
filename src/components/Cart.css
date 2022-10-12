@@ -198,7 +198,6 @@
     color: #EDEDED;
     padding: 10px 0;
     font-size: 16px;
-    font-weight: bold;
     text-transform: uppercase;
     letter-spacing: 1px;
     transition: background-color 0.15s, border 0.15s;
@@ -230,7 +229,6 @@
     border-radius: 3px;
     font-size: 16px;
     padding: 10px 0;
-    font-weight: bold;
     text-transform: uppercase;
     letter-spacing: 1px;
     transition: background-color 0.15s, border 0.15s;
@@ -238,5 +236,6 @@
 
 .cart-summary-footer button:hover{
     background-color: #b4002d;
+    border: 1px solid #b4002d;
     cursor: pointer;
 }

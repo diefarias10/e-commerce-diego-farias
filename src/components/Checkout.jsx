@@ -12,7 +12,7 @@ export default function Checkout({ close }) {
     const [phone, setPhone] = useState('')
     const [email, setEmail] = useState('')
     const [orderId, setOrderId] = useState('')
-    const { cart, getTotalPrice } = useContext(CartContext)
+    const { cart, getTotalPrice, clearCart } = useContext(CartContext)
 
     function submitOrder() {
         setLoading(true)
@@ -30,22 +30,36 @@ export default function Checkout({ close }) {
         addDoc(myCollection, order).then(({ id }) => {
             setLoading(false)
             setOrderId(id)
-            alert('Su orden ha sido enviada correctamente!')
+            clearCart()
         })
 
     }
 
     return (
-        <div className="checkoutForm">
-            <h1>Completa tu orden...</h1>
-            <input value={name} type="text" placeholder="Nombre" onChange={(e) => setName(e.target.value)} />
-            <input value={phone} type="text" placeholder="Telefono" onChange={(e) => setPhone(e.target.value)} />
-            <input value={email} type="text" placeholder="Email" onChange={(e) => setEmail(e.target.value)} />
+        <div>
+            {orderId ?
+                <div>
+                    <p>Compra finalizada!</p>
+                    <p>Su código de orden es: <b>{orderId}</b></p>
+                    <div className="checkoutForm-actions">
+                    <button className="checkoutForm-PrimaryBtn" onClick={close}>Entendido</button>
+                    </div>
+                </div>
+                :
+                <div className="checkoutForm">
+                    <h1>Completa tus datos para finalizar la compra</h1>
+                    <input value={name} type="text" placeholder="Nombre" onChange={(e) => setName(e.target.value)} />
+                    <input value={phone} type="text" placeholder="Telefono" onChange={(e) => setPhone(e.target.value)} />
+                    <input value={email} type="text" placeholder="Email" onChange={(e) => setEmail(e.target.value)} />
 
-            <div className="checkoutForm-actions">
-                <button onClick={submitOrder}>Finalizar compra!</button>
-                <button onClick={close}>Cancelar</button>
-            </div>
+                    <div className="checkoutForm-actions">
+                        <button className="checkoutForm-PrimaryBtn" onClick={submitOrder}>Finalizar compra!</button>
+                        <button className="checkoutForm-SecondaryBtn" onClick={close}>Cancelar</button>
+                    </div>
+                </div>
+            }
         </div>
+
+
     )
-}
+}/* master*/
