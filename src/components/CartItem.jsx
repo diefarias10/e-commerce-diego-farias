@@ -15,7 +15,6 @@ export default function CartItem({ item }) {
                     <p className="cart-product-title">{item.title}</p>
                     <p className="cart-product-id">#{item.id}</p>
                     <a className="cart-product-remove" >Eliminar</a>
-                    <button /*onClick={removeItem(item.id)}*/>Borrar</button>
                 </div>
             </div>
             <div className="cart-product-count">
